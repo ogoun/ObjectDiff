@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CB1F412-2357-46EA-85B9-60257A82D3AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ObjectDiff</RootNamespace>
+    <AssemblyName>ObjectDiff</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Diff.cs" />
+    <Compile Include="DiffChain.cs" />
+    <Compile Include="DiffOptions.cs" />
+    <Compile Include="DiffPart.cs" />
+    <Compile Include="DiffPartType.cs" />
+    <Compile Include="Internal\IgnoreMembersLogic.cs" />
+    <Compile Include="Internal\MapContext.cs" />
+    <Compile Include="Internal\NotFoundResolverException.cs" />
+    <Compile Include="Internal\ResolveContext.cs" />
+    <Compile Include="Internal\ResolverMap.cs" />
+    <Compile Include="Internal\Resolvers\ArrayResolver.cs" />
+    <Compile Include="Internal\Resolvers\ClassResolver.cs" />
+    <Compile Include="Internal\Resolvers\CollectionResolver.cs" />
+    <Compile Include="Internal\Resolvers\DictionaryResolver.cs" />
+    <Compile Include="Internal\Resolvers\EnumResolver.cs" />
+    <Compile Include="Internal\Resolvers\FontResolver.cs" />
+    <Compile Include="Internal\Resolvers\IDiffResolver.cs" />
+    <Compile Include="Internal\Resolvers\IPEndPointResolver.cs" />
+    <Compile Include="Internal\Resolvers\ListResolver.cs" />
+    <Compile Include="Internal\Resolvers\RuntimeTypeResolver.cs" />
+    <Compile Include="Internal\Resolvers\StringResolver.cs" />
+    <Compile Include="Internal\Resolvers\StructResolver.cs" />
+    <Compile Include="Internal\Resolvers\UriResolver.cs" />
+    <Compile Include="Internal\Resolvers\ValueTypeResolver.cs" />
+    <Compile Include="Internal\Serialize\ObjSerializer.cs" />
+    <Compile Include="Internal\TypeHelpers.cs" />
+    <Compile Include="Internal\TypeMemberInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
