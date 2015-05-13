@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace ObjectDiff
 {
     /// <summary>
     /// Атом разности объектов
     /// </summary>
+    [Serializable]
     public class DiffPart
     {
         /// <summary>

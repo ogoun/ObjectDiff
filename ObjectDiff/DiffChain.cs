@@ -8,6 +8,7 @@ namespace ObjectDiff
     /// <summary>
     /// Набор атомов разностей объектов, приводящий состояние одного объекта к состоянию другого
     /// </summary>
+    [Serializable]
     public class DiffChain : ICollection<DiffPart>
     {
         /// <summary>
@@ -144,6 +145,18 @@ namespace ObjectDiff
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _chain.GetEnumerator();
+        }
+        #endregion
+
+        #region Serialization
+        public static byte[] ToBinary(DiffChain chan)
+        {
+            return BinarySerializeService.ObjectToByteArray(chan);
+        }
+
+        public static DiffChain FromBinary(byte[] data)
+        {
+            return (DiffChain)BinarySerializeService.ByteArrayToObject(data);
         }
         #endregion
     }

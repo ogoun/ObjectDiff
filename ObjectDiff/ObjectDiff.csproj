@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySerializeService.cs" />
     <Compile Include="Diff.cs" />
     <Compile Include="DiffChain.cs" />
     <Compile Include="DiffOptions.cs" />
