@@ -78,14 +78,23 @@ namespace ObjectDiff.Internal.Resolvers
                 var fi = member as FieldInfo;
                 if (fi != null)
                 {
+                    object fieldLocal = fi.GetValue(local);
+                    Type type = (fieldLocal == null) ? fi.FieldType : fieldLocal.GetType();
+
                     if (diff.DiffType == DiffPartType.Exclude)
                     {
-                        fi.SetValue(local, TypeHelpers.CreateDefaultState(fi.FieldType));
+                        if (context.Path.Count == 0)
+                        {
+                            fi.SetValue(local, TypeHelpers.CreateDefaultState(type));
+                        }
+                        else
+                        {
+                            context.Resolvers.FindResolver(type).Map(ref fieldLocal, diff, new MapContext(context, type));
+                           // fi.SetValue(local, fieldLocal);
+                        }
                     }
                     else
                     {
-                        object fieldLocal = fi.GetValue(local);
-                        Type type = (fieldLocal == null) ? fi.FieldType : fieldLocal.GetType();
                         context.Resolvers.FindResolver(type).Map(ref fieldLocal, diff, new MapContext(context, type));
                         fi.SetValue(local, fieldLocal);
                     }
@@ -93,14 +102,23 @@ namespace ObjectDiff.Internal.Resolvers
                 var pi = member as PropertyInfo;
                 if (pi != null)
                 {
+                    object propertyLocal = pi.GetValue(local);
+                    Type type = (propertyLocal == null) ? pi.PropertyType : propertyLocal.GetType();
+
                     if (diff.DiffType == DiffPartType.Exclude)
                     {
-                        pi.SetValue(local, TypeHelpers.CreateDefaultState(pi.PropertyType));
+                        if (context.Path.Count == 0)
+                        {
+                            pi.SetValue(local, TypeHelpers.CreateDefaultState(pi.PropertyType));
+                        }
+                        else
+                        {
+                            context.Resolvers.FindResolver(type).Map(ref propertyLocal, diff, new MapContext(context, type));
+                           // pi.SetValue(local, propertyLocal);
+                        }
                     }
                     else
                     {
-                        object propertyLocal = pi.GetValue(local);
-                        Type type = (propertyLocal == null) ? pi.PropertyType : propertyLocal.GetType();
                         context.Resolvers.FindResolver(type).Map(ref propertyLocal, diff, new MapContext(context, type));
                         pi.SetValue(local, propertyLocal);
                     }
