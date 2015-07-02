@@ -6,7 +6,7 @@ namespace ObjectDiff.Internal
     /// <summary>
     /// Контекст изменения объекта
     /// </summary>
-    internal sealed class MapContext
+    internal struct MapContext
     {
         /// <summary>
         /// Набор обработчиков

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace ObjectDiff
 {
@@ -8,7 +7,7 @@ namespace ObjectDiff
     /// Атом разности объектов
     /// </summary>
     [Serializable]
-    public class DiffPart
+    public struct DiffPart
     {
         /// <summary>
         /// Путь к отличающейся части

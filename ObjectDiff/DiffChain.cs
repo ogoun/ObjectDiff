@@ -55,7 +55,7 @@ namespace ObjectDiff
             }
             else
             {
-                throw new Exception("It is read only collection");
+                throw new InvalidOperationException("It is read only collection");
             }
         }
 
@@ -70,7 +70,7 @@ namespace ObjectDiff
             }
             else
             {
-                throw new Exception("It is read only collection");
+                throw new InvalidOperationException("It is read only collection");
             }
         }
 
@@ -111,7 +111,7 @@ namespace ObjectDiff
             }
             else
             {
-                throw new Exception("It is read only collection");
+                throw new InvalidOperationException("It is read only collection");
             }
         }
 

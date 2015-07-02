@@ -7,7 +7,7 @@ namespace ObjectDiff.Internal
     /// <summary>
     /// Контекст вычисления разности объектов
     /// </summary>
-    internal sealed class ResolveContext
+    internal struct ResolveContext
     {
         public readonly DiffOptions Options;
         /// <summary>

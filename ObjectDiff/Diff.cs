@@ -33,7 +33,7 @@ namespace ObjectDiff
             Type lType = local.GetType();
             if (!(rType == lType))
             {
-                throw new Exception("Objects has different type");
+                throw new InvalidCastException("Objects has different type [" + rType.Name + " and " + lType.Name + "]");
             }
             var context = new ResolveContext(new ResolverMap(), lType, options);
             return context.Resolvers.FindResolver(lType).Resolve(local, remote, context);
