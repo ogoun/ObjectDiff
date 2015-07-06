@@ -7,7 +7,7 @@ namespace ObjectDiff
     /// Атом разности объектов
     /// </summary>
     [Serializable]
-    public struct DiffPart
+    public class DiffPart
     {
         /// <summary>
         /// Путь к отличающейся части
